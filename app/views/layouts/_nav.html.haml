@@ -1,0 +1,6 @@
+= link_to 'Home', root_path
+
+- if user_signed_in?
+  Search:
+  = form_tag search_users_path, method: :get, style: 'display: inline-block;' do
+    = search_field_tag :q, params[:q]

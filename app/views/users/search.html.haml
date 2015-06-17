@@ -1,0 +1,12 @@
+%h1
+  Search results for
+  %small{style: 'font-weight: normal;'}= params[:q]
+  
+- if @users.present?
+  %ul
+    - @users.each do |user|
+      %li
+        = render partial: 'users/list', locals: { user: user }
+- else
+  No users found matching your query.
+      

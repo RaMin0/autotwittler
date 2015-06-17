@@ -1,0 +1,13 @@
+= form_for @user, url: profile_path do |f|
+  %p
+    = f.label :name, 'Name:'
+    = f.text_field :name
+  %p
+    = f.label :description, 'Description:'
+    = f.text_area :description
+  %p
+    = f.label :url, 'URL:'
+    = f.url_field :url
+  
+  %p
+    = f.submit

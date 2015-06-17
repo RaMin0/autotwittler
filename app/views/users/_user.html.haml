@@ -1,0 +1,48 @@
+- blocked = current_user.remote_blocked?(user)
+
+%h1
+  = user.screen_name
+  - unless blocked || current_user.me?(user.screen_name)
+    %small{style: 'font-weight: normal; font-size: 50%;'}
+      = render partial: 'shared/follow_unfollow', locals: { user: @user }
+      = link_to 'Block', user_block_path(user.id), method: :post
+      
+%strong Tweets:
+= user.statuses_count.to_i
+&nbsp;
+%strong Followers:
+%span#followers_count= user.followers_count.to_i
+&nbsp;
+%strong Following:
+= user.friends_count.to_i
+
+%dl
+- if user.name.present?
+  %dt
+    %strong Name:
+  %dd
+    = image_tag user.profile_image_url
+    = user.name
+
+- if user.location.present?
+  %dt
+    %strong Location:
+  %dd= user.location
+
+- if user.description.present?
+  %dt
+    %strong Description:
+  %dd= twitter_text user.description  
+
+- if blocked
+  %p
+    This user is blocked.
+    = link_to 'Unblock', user_unblock_path(user.id), method: :delete
+    to view his/her tweets.
+- else
+  - @latest_tweets = current_user.remote_user_timeline(user)
+  - if @latest_tweets.present?
+    %h2 Latest tweets
+    %ul
+      - @latest_tweets.each do |tweet|
+        %li= render partial: 'shared/tweet', locals: { tweet: tweet }

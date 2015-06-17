@@ -1,0 +1,6 @@
+%h2 Post a tweet
+= form_for @status do |f|
+  = error_messages(f)
+  
+  = f.text_area :text
+  = f.submit 'Tweet!'

@@ -1,0 +1,12 @@
+= render partial: 'shared/tweet', locals: { tweet: @status }
+
+- if @parent_status.present?
+  %h3 In reply to...
+  = render partial: 'shared/tweet', locals: { tweet: @parent_status }
+
+%h2 Post a reply
+= form_for @reply, url: status_replies_path(@status.id) do |f|
+  = error_messages(f)
+  
+  = f.text_area :text
+  = f.submit 'Reply!'
