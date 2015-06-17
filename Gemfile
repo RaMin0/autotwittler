@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.1'
+
 gem 'rails', '4.2.1'
 gem 'mysql2'
 
@@ -27,4 +29,8 @@ group :development, :test do
   
   # Use Capistrano for deployment
   # gem 'capistrano-rails'
+end
+
+group :production do
+  gem 'pg'
 end
