@@ -13,6 +13,8 @@ gem 'twitter-text'
 
 gem 'bootstrap-sass'
 gem 'coffee-rails'
+gem 'compass-rails'
+gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'sass-rails'

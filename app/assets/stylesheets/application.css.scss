@@ -1,0 +1,15 @@
+@import "bootstrap-overrides";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "compass";
+
+@import "statuses";
+
+textarea {
+  min-height: 50px;
+  @include resizable(vertical);
+}

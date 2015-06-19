@@ -1,6 +1,15 @@
-%h2 Post a tweet
-= form_for @status do |f|
-  = error_messages(f)
-  
-  = f.text_area :text
-  = f.submit 'Tweet!'
+.well.well-sm
+  = form_for @status, remote: true, html: { id: 'new-tweet', data: { type: :json } } do |f|
+    = error_messages(f)
+    
+    .form-group
+      = f.text_area :text, class: 'form-control', rows: 3, placeholder: 'What\'s up?', autofocus: true
+    
+    .row
+      .col-sm-9
+        %p.text-danger
+      .col-sm-3.text-right
+        .visible-xs
+          = f.button 'Tweet!', name: nil, class: 'btn btn-primary btn-block', data: { disable_with: '<i class="fa fa-circle-o-notch fa-spin"></i> Tweeting...' }
+        .hidden-xs
+          = f.button 'Tweet!', name: nil, class: 'btn btn-primary', data: { disable_with: '<i class="fa fa-circle-o-notch fa-spin"></i> Tweeting...' }

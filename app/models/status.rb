@@ -6,7 +6,7 @@ class Status
   attribute :text
   
   def save
-    tweet = self.user.client.update(self.text)
+    tweet = self.user.client.update!(self.text)
     self.tweet_id = tweet.id
     true
   rescue Twitter::Error::Forbidden => e

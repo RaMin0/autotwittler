@@ -1,11 +1,17 @@
 class TimelineController < ApplicationController
-  def index
+  def show
     if user_signed_in?
       @status = Status.new
-      @timeline = current_user.remote_timeline
-      @suggested_users = current_user.remote_suggestions
     else
-      render template: 'timeline/guest'
+      render text: '', layout: 'guest'
     end
+  end
+  
+  def statuses
+    @timeline = current_user.remote_timeline
+  end
+  
+  def recents
+    @recents = current_user.remote_recents
   end
 end

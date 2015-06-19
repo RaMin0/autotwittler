@@ -1,6 +1,12 @@
-= link_to 'Home', root_path
-
-- if user_signed_in?
-  Search:
-  = form_tag search_users_path, method: :get, style: 'display: inline-block;' do
-    = search_field_tag :q, params[:q]
+%nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{type: :button, data: { target: '.navbar-collapse', toggle: :collapse}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to root_path, class: 'navbar-brand' do
+        = image_tag 'logo.png'
+    .navbar-collapse.collapse
+      = render partial: 'layouts/session'
+      = render partial: 'layouts/search'

@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     self.client.user_timeline(user_id, count: 5)
   end
   
-  def remote_suggestions(count = 5)
+  def remote_recents(count = 5)
     sample_users = []
     streaming_client.sample do |s|
       case s

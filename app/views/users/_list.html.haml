@@ -1,3 +1,8 @@
-= twitter_text "@#{user.screen_name}"
-&mdash;
-= render partial: 'shared/follow_unfollow', locals: { user: user }
+%li.media
+  .media-left.media-middle
+    = link_to user_path(user.screen_name) do
+      = image_tag user.profile_image_url, class: 'media-object img-circle img-thumbnail'
+  .media-body
+    %h4= twitter_text "@#{user.screen_name}"
+    %p
+      = render partial: 'shared/follow_unfollow', locals: { user: user }

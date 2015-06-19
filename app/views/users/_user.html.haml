@@ -45,4 +45,4 @@
     %h2 Latest tweets
     %ul
       - @latest_tweets.each do |tweet|
-        %li= render partial: 'shared/tweet', locals: { tweet: tweet }
+        %li= render partial: 'statuses/status', locals: { status: tweet }

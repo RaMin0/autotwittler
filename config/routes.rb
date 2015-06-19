@@ -22,5 +22,10 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
   end
   
-  root 'timeline#index'
+  resource :timeline, controller: :timeline, only: [] do
+    get :statuses
+    get :recents
+  end
+  
+  root 'timeline#show'
 end

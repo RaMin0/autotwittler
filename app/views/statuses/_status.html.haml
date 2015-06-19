@@ -1,0 +1,8 @@
+.list-group-item
+  .media
+    .media-left
+      = link_to user_path(status.user.screen_name) do
+        = image_tag status.user.profile_image_url, class: 'media-object'
+    .media-body
+      %h4= twitter_text status.text
+      %p= twitter_text "@#{status.user.screen_name}"
