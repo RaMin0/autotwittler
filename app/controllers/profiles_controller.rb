@@ -4,10 +4,8 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user.remote_user
     @status = Status.new
-  end
-  
-  def edit
-    @user = current_user
+    
+    render template: 'users/show'
   end
   
   def update

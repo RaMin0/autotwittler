@@ -1,2 +1,2 @@
-$('#follow-<%= params[:user_id] %>').hide().siblings('#unfollow-<%= params[:user_id] %>').show();
+$('#follow-<%= params[:user_id] %>').addClass('hide').siblings('#unfollow-<%= params[:user_id] %>').removeClass('hide');
 $('span#followers_count').html('<%= @user.followers_count.to_i + 1 %>');

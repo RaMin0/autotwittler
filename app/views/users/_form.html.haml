@@ -1,0 +1,24 @@
+= form_for :user, object: user, url: profile_path, method: :patch do |f|
+  .text-center
+    = link_to user_path(user.screen_name) do
+      = image_tag user.profile_image_url.to_s.gsub('_normal', ''), class: 'img-thumbnail img-responsive'
+    %h1 @#{user.screen_name}
+    %p= render partial: 'users/stats', locals: { user: user }
+    - if user.description.present?
+      %p.lead
+        = f.text_area :description, class: 'form-control', rows: 3, placeholder: 'Description'
+  .row
+    .col-xs-8
+      .form-group
+        = f.label :name, 'Full name:'
+        = f.text_field :name, class: 'form-control', placeholder: 'Full name'
+      .form-group
+        = f.label :url, 'Website:'
+        = f.url_field :url, class: 'form-control', placeholder: 'Website'
+    .col-xs-4
+      .text-center
+        = f.button type: :submit, class: 'btn btn-primary' do
+          %i.fa.fa-edit
+          Edit profile
+        %br/
+        = link_to 'Cancel', profile_path, id: 'cancel-edit-profile', class: 'btn btn-link'

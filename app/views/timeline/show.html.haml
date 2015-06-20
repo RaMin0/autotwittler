@@ -1,11 +1,11 @@
 = render partial: 'shared/new_tweet'
 
-#timeline-statuses-loader
+#statuses-loader
   .list-group
     .list-group-item
       .text-center
         %i.fa.fa-refresh.fa-spin.fa-lg
-.list-group#timeline-statuses{rel: :tweets, data: { refresh_url: statuses_timeline_path(:js), loader: '#timeline-statuses-loader' }}
+.list-group#statuses{rel: :tweets, data: { refresh_url: statuses_timeline_path(:js), loader: '#statuses-loader' }}
 
 - content_for :sidebar do
   %h2 Recent Tweeters

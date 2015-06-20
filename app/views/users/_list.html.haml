@@ -1,7 +1,7 @@
 %li.media
   .media-left.media-middle
     = link_to user_path(user.screen_name) do
-      = image_tag user.profile_image_url, width: 48, class: 'media-object img-circle img-thumbnail'
+      = image_tag user.profile_image_url.to_s.gsub('_normal', '_bigger'), width: 73, class: 'media-object img-circle img-thumbnail'
   .media-body
     %h4= twitter_text "@#{user.screen_name}"
     %p

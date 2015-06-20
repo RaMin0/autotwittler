@@ -1,0 +1,8 @@
+%strong Tweets:
+= user.statuses_count.to_i
+&nbsp;
+%strong Followers:
+%span#followers_count= user.followers_count.to_i
+&nbsp;
+%strong Following:
+= user.friends_count.to_i

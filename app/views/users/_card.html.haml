@@ -1,0 +1,38 @@
+#card
+  .text-center
+    = link_to user_path(user.screen_name) do
+      = image_tag user.profile_image_url.to_s.gsub('_normal', ''), class: 'img-thumbnail img-responsive'
+    %h1 @#{user.screen_name}
+    %p= render partial: 'users/stats', locals: { user: user }
+    - if user.description.present?
+      %p.lead
+        = twitter_text user.description
+    - unless blocked || current_user.me?(user.screen_name)
+      %p
+        = render partial: 'shared/follow_unfollow', locals: { user: user }
+        = link_to 'Block', user_block_path(user.id), method: :post, class: 'btn btn-danger', data: { disable_with: 'Blocking...' }
+  .row
+    .col-xs-8
+      %dl
+        - if user.name.present?
+          %dt
+            %strong Full name:
+          %dd= user.name
+        - if user.location.present?
+          %dt
+            %strong Location:
+          %dd= user.location
+        - if user.url.present?
+          %dt
+            %strong Website:
+          %dd= link_to nil, user.url.to_s
+    .col-xs-4
+      - if current_user.me?(user.screen_name)
+        .text-center
+          = link_to edit_profile_path, id: 'edit-profile', class: 'btn btn-link' do
+            %i.fa.fa-edit
+            Edit profile
+          
+- if current_user.me?(user.screen_name)
+  #edit_user.hide
+    = render partial: 'users/form', locals: { user: user }

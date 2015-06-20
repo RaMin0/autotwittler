@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
   
   def remote_user_timeline(user_id)
-    self.client.user_timeline(user_id, count: 5)
+    self.client.user_timeline(user_id)
   end
   
   def remote_recents(count = 5)

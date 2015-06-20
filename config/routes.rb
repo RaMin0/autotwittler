@@ -4,12 +4,14 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
   
-  resource :profile, except: :destroy
+  resource :profile, only: [:show, :update]
   
   resources :users do
     collection do
       get :search
     end
+    
+    get :statuses
     
     post :follow, controller: :followships, action: :create
     delete :unfollow, controller: :followships, action: :destroy

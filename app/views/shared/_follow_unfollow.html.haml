@@ -1,2 +1,2 @@
-= link_to 'Follow', user_follow_path(user.screen_name), method: :post, data: { disable_with: 'Following...' }, remote: true, id: "follow-#{user.screen_name}", style: ('display: none;' if user.following?)
-= link_to 'Unfollow', user_unfollow_path(user.screen_name), method: :delete, data: { disable_with: 'Unfollowing...' }, remote: true, id: "unfollow-#{user.screen_name}", style: ('display: none;' unless user.following?)
+= link_to 'Follow', user_follow_path(user.screen_name), method: :post, data: { disable_with: 'Following...' }, remote: true, id: "follow-#{user.screen_name}", class: "btn btn-primary#{(' hide' if user.following?)}"
+= link_to 'Unfollow', user_unfollow_path(user.screen_name), method: :delete, data: { disable_with: 'Unfollowing...' }, remote: true, id: "unfollow-#{user.screen_name}", class: "btn btn-primary#{(' hide' unless user.following?)}"

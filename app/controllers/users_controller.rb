@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     redirect_to root_path, alert: "User not found: #{params[:id]}"
   end
   
+  def statuses
+    @statuses = current_user.remote_user_timeline(params[:user_id])
+  end
+  
   def search
     @users = current_user.remote_search(params[:q])
   end
