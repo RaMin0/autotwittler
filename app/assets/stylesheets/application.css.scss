@@ -8,8 +8,13 @@
 @import "compass";
 
 @import "statuses";
+@import "search";
 
 textarea {
   min-height: 50px;
   @include resizable(vertical);
+}
+
+.navbar-collapse.in {
+  overflow: visible;
 }

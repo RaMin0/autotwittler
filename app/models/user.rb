@@ -85,8 +85,8 @@ class User < ActiveRecord::Base
     self.client.unfollow(username).first
   end
   
-  def remote_search(query)
-    self.client.user_search(query, count: 10)
+  def remote_search(query, count = 5)
+    self.client.user_search(query, count: count)
   end
   
   def remote_blocked?(user)

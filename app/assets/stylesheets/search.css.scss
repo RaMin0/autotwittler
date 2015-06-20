@@ -1,0 +1,23 @@
+.navbar-form {
+  .twitter-typeahead {
+    margin-bottom: -5px;
+    
+    &, .tt-hint, .tt-input {
+      width: 100%;
+      @include border-radius(0 4px 4px 0 !important);
+    }
+    
+    .list-group {
+      @include border-radius(0 4px 4px);
+      @include box-shadow(0px 8px 10px #ccc, -10px 8px 15px #ccc, 10px 8px 15px #ccc);
+    }
+    
+    .list-group-item {
+      margin-top: 0;
+      
+      &:first-child {
+        @include border-top-left-radius(0);
+      }
+    }
+  }
+}

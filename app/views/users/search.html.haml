@@ -1,12 +1,15 @@
 %h1
   Search results for
-  %small{style: 'font-weight: normal;'}= params[:q]
+  %small= params[:q]
   
 - if @users.present?
-  %ul
-    - @users.each do |user|
-      %li
-        = render partial: 'users/list', locals: { user: user }
+  .row
+    - @users.in_groups_of(3).to_a.transpose.each do |users|
+      .col-sm-4
+        %ul{style: 'padding: 0;'}
+          - users.each do |user|
+            - if user.present?
+              = render partial: 'users/list', locals: { user: user }
 - else
-  No users found matching your query.
+  .alert.alert-info No users found matching your query.
       

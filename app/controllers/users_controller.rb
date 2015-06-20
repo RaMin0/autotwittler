@@ -16,6 +16,10 @@ class UsersController < ApplicationController
   end
   
   def search
-    @users = current_user.remote_search(params[:q])
+    respond_to do |format|
+      format.html { @users = current_user.remote_search(params[:q], 15) }
+      format.json { @users = current_user.remote_search(params[:q], 6) }
+    end
+    
   end
 end

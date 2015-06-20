@@ -3,4 +3,6 @@
     .input-group{style: 'display: table;'}
       %span.input-group-addon{style: 'width: 1%;'}
         %i.fa.fa-search
-      = search_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search...'
+        %i.fa.fa-refresh.fa-spin.hide
+      = search_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search...', autocomplete: :off, dir: :ltr, rel: :typeahead, data: { remote_url: search_users_path(q: '%QUERY') }
+      = submit_tag nil, name: nil, class: 'hide'

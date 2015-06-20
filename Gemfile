@@ -9,6 +9,7 @@ gem 'active_attr'
 gem 'devise'
 gem 'dynamic_form'
 gem 'figaro'
+gem 'rabl'
 gem 'twitter-text'
 
 gem 'bootstrap-sass'

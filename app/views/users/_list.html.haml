@@ -3,6 +3,7 @@
     = link_to user_path(user.screen_name) do
       = image_tag user.profile_image_url.to_s.gsub('_normal', '_bigger'), width: 73, class: 'media-object img-circle img-thumbnail'
   .media-body
-    %h4= twitter_text "@#{user.screen_name}"
+    %h4= user.name
+    %p= twitter_text "@#{user.screen_name}"
     %p
       = render partial: 'shared/follow_unfollow', locals: { user: user }
