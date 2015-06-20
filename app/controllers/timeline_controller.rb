@@ -8,7 +8,8 @@ class TimelineController < ApplicationController
   end
   
   def statuses
-    @timeline = current_user.remote_timeline
+    @statuses = current_user.remote_timeline(params[:max_id].to_s.presence)
+    render template: 'users/statuses'
   end
   
   def recents

@@ -1,2 +1,6 @@
-- @statuses.each do |status|
-  = render partial: 'statuses/status', locals: { status: status }
+- if @statuses.present?
+  - @statuses.each do |status|
+    = render partial: 'statuses/status', locals: { status: status }
+    
+  .list-group-item.text-center
+    = link_to 'Load more', url_for(params.merge(max_id: @statuses.last.id - 1)), class: 'btn btn-link btn-block', rel: :more

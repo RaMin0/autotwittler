@@ -48,12 +48,18 @@ class User < ActiveRecord::Base
       url:         self.url
   end
   
-  def remote_timeline(options = {})
-    self.client.home_timeline
+  def remote_timeline(max_id = nil)
+    options = { count: 10 }
+    options[:max_id] = max_id if max_id.present?
+    
+    self.client.home_timeline(options)
   end
   
-  def remote_user_timeline(user_id)
-    self.client.user_timeline(user_id)
+  def remote_user_timeline(user_id, max_id = nil)
+    options = { count: 10 }
+    options[:max_id] = max_id if max_id.present?
+    
+    self.client.user_timeline(user_id, options)
   end
   
   def remote_recents(count = 5)

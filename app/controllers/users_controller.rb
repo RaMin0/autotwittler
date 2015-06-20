@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
   
   def statuses
-    @statuses = current_user.remote_user_timeline(params[:user_id])
+    @statuses = current_user.remote_user_timeline(params[:user_id], params[:max_id].to_s.presence)
   end
   
   def search
