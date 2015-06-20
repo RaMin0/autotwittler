@@ -29,7 +29,7 @@
     .col-xs-4
       - if current_user.me?(user.screen_name)
         .text-center
-          = link_to edit_profile_path, id: 'edit-profile', class: 'btn btn-link' do
+          = link_to '#', id: 'edit-profile', class: 'btn btn-link' do
             %i.fa.fa-edit
             Edit profile
           
