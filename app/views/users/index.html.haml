@@ -1,0 +1,14 @@
+%h1 Users
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover.table-condensed
+    - user_fields = User.column_names
+    %thead
+      %tr
+        - user_fields.each do |field|
+          %th= field.titleize
+    - @users.each do |user|
+      %tr
+        - user_fields.each do |field|
+          %td= user.send(field)
+    
